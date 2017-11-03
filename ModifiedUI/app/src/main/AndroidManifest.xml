@@ -6,6 +6,8 @@
         android:name="org.androidtown.modifiedui.permission.MAPS_RECEIVE"
         android:protectionLevel="signature" />
 
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <uses-permission android:name="android.permission.CALL_PHONE" />
@@ -47,15 +49,13 @@
         </intent-filter>
         </activity>
 
-        <activity android:name=".RegisterActivity" />
-
+        <activity android:name=".RegisterActivity"></activity>
         <activity android:name=".MapCallActivity"></activity>
-
         <activity android:name=".VolunteerActivity"></activity>
-
         <activity android:name=".LocationRegisterActivity"></activity>
+        <activity android:name=".PermissionActivity"></activity>
+        <activity android:name=".LoginActivity"></activity>
 
-        <activity android:name=".LoginActivity" />
     </application>
 
 </manifest>

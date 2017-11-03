@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
+import java.security.Permission;
+
 /**
  * Created by EJW on 2017-10-04.
  * 시작 대기화면ㅋㅋㅋㅋㅋㅋ
@@ -20,7 +22,7 @@ public class SplashActivity extends Activity {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        startActivity(new Intent(this, LoginActivity.class));
+        startActivity(new Intent(this, PermissionActivity.class));
         finish();
     }
 }
