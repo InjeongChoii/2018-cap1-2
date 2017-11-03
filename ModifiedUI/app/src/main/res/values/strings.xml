@@ -4,7 +4,7 @@
 
     <!-- permission -->
     <string name="permission_checking">네트워크에 연결되어있지 않습니다</string>
-    <string name="index_message">냉장고를 부탁해!</string>
+    <string name="index_message">odi</string>
     <string name="permission_setting_title">권한 설정</string>
     <string name="permission_setting_message">앱을 실행하기 위해서는 권한 설정을 해야 합니다.</string>
     <string name="permission_setting_restart">권한을 설정하고 다시 실행해 주세요!</string>
