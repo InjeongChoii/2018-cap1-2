@@ -18,6 +18,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.R.attr.permission;
+
 /**
  * 앱을 실행할 때 필요한 권한을 처리하기 위한 액티비티
  */
@@ -49,6 +51,9 @@ public class PermissionActivity extends AppCompatActivity {
     private  boolean  checkAndRequestPermissions() {
         String[] permissions = new String[]{
                 Manifest.permission.READ_PHONE_STATE,
+                Manifest.permission.CALL_PHONE,
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACCESS_COARSE_LOCATION
         };
 
         List<String> listPermissionsNeeded = new ArrayList<>();
