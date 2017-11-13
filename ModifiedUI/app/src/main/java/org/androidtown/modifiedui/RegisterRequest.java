@@ -11,7 +11,7 @@ import java.util.Map;
  */
 
 public class RegisterRequest extends StringRequest {
-    final static private String URL= "http://10.30.26.42/ProbonoDBConn/Odi/Register_Odi.php";
+    final static private String URL= "http://172.30.1.4/ProbonoDBConn/Odi/Register_Odi.php";
     private Map<String, String> parameters;
 
     public RegisterRequest(String userID, String userName, String dORv, String carer, Response.Listener<String> listener){
