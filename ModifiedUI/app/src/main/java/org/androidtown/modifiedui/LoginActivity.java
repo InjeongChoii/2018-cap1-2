@@ -3,12 +3,19 @@ package org.androidtown.modifiedui;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.telephony.TelephonyManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
+
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONObject;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -55,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
         });
         //여기까지 임시 화면전환
 
-        /*
+
         //디비 연동 로그인
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,15 +88,15 @@ public class LoginActivity extends AppCompatActivity {
                                 //String dORv = jsonResponse.getString("dORv");
                                // String carer = jsonResponse.getString("carer");
 
-                                if(finalDORv =="d"){
+                                /*if(finalDORv =="d"){
                                     Intent intent = new Intent(LoginActivity.this, MapCallActivity.class);
                                     intent.putExtra("userID", userID);
                                     LoginActivity.this.startActivity(intent);
-                                }else{
+                                }else{*/
                                     Intent intent = new Intent(LoginActivity.this, VolunteerActivity.class);
                                     intent.putExtra("userID", userID);
                                     LoginActivity.this.startActivity(intent);
-                                }
+                                //}
 
                             }else{
                                 AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
@@ -108,7 +115,7 @@ public class LoginActivity extends AppCompatActivity {
                 RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
                 queue.add(loginRequest);
             }
-        });*/
+        });
 
 
         Button registerButton = (Button) findViewById(R.id.registerButton);

@@ -50,8 +50,10 @@ public class VolunteerActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        requestMyLocation();
        // locationText = (TextView) findViewById(R.id.locationText);
 
+        /*위치확인 버튼 : 삭제함
         Button locationButton = (Button) findViewById(R.id.locationButton);
         locationButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,7 +61,7 @@ public class VolunteerActivity extends AppCompatActivity {
                 //startLocationService();   ->현재위치 좌표 받아오기
                 requestMyLocation();
             }
-        });
+        });*/
 
         Button obRegiButton = (Button) findViewById(R.id.obRegiButton);
         obRegiButton.setOnClickListener(new View.OnClickListener() {
@@ -147,12 +149,12 @@ public class VolunteerActivity extends AppCompatActivity {
         }
     }
 
-    private void showCurrentLocation(Location location){
+    private void showCurrentLocation(Location location){  //마커 표시
         LatLng curPoint = new LatLng(location.getLatitude(), location.getLongitude());
         map.animateCamera(CameraUpdateFactory.newLatLngZoom(curPoint,18));
-        showMyLocationMarker(location);
+        //showMyLocationMarker(location);
     }
-    private void showMyLocationMarker(Location location){
+    /*private void showMyLocationMarker(Location location){
         if(myLocationMarker == null){
             myLocationMarker = new MarkerOptions();
             myLocationMarker.position(
@@ -164,7 +166,7 @@ public class VolunteerActivity extends AppCompatActivity {
         }else{
             myLocationMarker.position(new LatLng(location.getLatitude(),location.getLongitude()));
         }
-    }
+    }*/
 
     private void startLocationService(){
         LocationManager manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);

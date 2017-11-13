@@ -29,7 +29,7 @@ public class MapCallActivity extends AppCompatActivity {
     private static final String TAG = "";
     private long btnPressTime = 0;
     private Toast toast;
-    private String tel = "01000000000";
+    private String tel = "tel:010-0000-0000";
 
     //boolean isGrantStorage = grantExternalStoragePermission();
 
