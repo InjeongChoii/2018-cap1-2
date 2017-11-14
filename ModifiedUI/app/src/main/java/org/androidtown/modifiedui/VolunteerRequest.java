@@ -7,24 +7,21 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by EJW on 2017-10-04.
+ * Created by EJW on 2017-11-13.
  */
 
-public class RegisterRequest extends StringRequest {
-    final static private String URL= "http://10.30.20.15/ProbonoDBConn/Odi/Register_Odi.php";
+public class VolunteerRequest extends StringRequest{
+    final static private String URL= "http://10.30.20.15/ProbonoDBConn/Odi/Volunteer_Odi.php";
     private Map<String, String> parameters;
 
-    public RegisterRequest(String userID, String userName, String dORv, String carer, Response.Listener<String> listener){
+
+    public VolunteerRequest(String userID, Response.Listener<String> listener){
         super(Method.POST, URL, listener, null);
         parameters = new HashMap<>();
         parameters.put("userID", userID);
-        parameters.put("userName", userName);
-        parameters.put("dORv", dORv);
-        parameters.put("carer", carer);
     }
     @Override
     public Map<String, String> getParams(){
         return parameters;
     }
-
 }

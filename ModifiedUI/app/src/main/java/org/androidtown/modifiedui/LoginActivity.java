@@ -1,5 +1,6 @@
 package org.androidtown.modifiedui;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,7 +11,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -29,8 +29,8 @@ public class LoginActivity extends AppCompatActivity {
         final EditText idText = (EditText) findViewById(R.id.idText);
         final CheckBox loginCkbx = (CheckBox)findViewById(R.id.loginCkbx);
         final Button loginButton = (Button) findViewById(R.id.loginButton);
-        Button dbutton = (Button)findViewById(R.id.disabledButton);
-        Button vbutton = (Button)findViewById(R.id.volunteerButton);
+//        Button dbutton = (Button)findViewById(R.id.disabledButton);
+//        Button vbutton = (Button)findViewById(R.id.volunteerButton);
 
         String userID = null;
         TelephonyManager mgr = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
@@ -49,13 +49,13 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 final String userID = idText.getText().toString();
-                String dORv = "";
-                if(!loginCkbx.isChecked()){ //비장애인인 경우
+                //final String dORv = "";
+                /*if(!loginCkbx.isChecked()){ //비장애인인 경우
                     dORv = "v";
                 } else if(loginCkbx.isChecked()){
                     dORv = "d";
                 }
-                final String finalDORv = dORv;
+                final String finalDORv = dORv;*/
 
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
@@ -66,17 +66,27 @@ public class LoginActivity extends AppCompatActivity {
                             if(success){
                                 String userID = jsonResponse.getString("userID");
                                 String dORv = jsonResponse.getString("dORv");
+                                String carer = jsonResponse.getString("carer");
 
-                                if(finalDORv =="d"){
+                                Toast toast = Toast.makeText(getApplicationContext(), userID +" dORV : "+ dORv + carer, Toast.LENGTH_LONG);
+                                toast.show();
+
+                                if(dORv.equals("d")){
                                     Intent intent = new Intent(LoginActivity.this, MapCallActivity.class);
                                     intent.putExtra("userID", userID);
                                     intent.putExtra("dORv", dORv);
                                     LoginActivity.this.startActivity(intent);
-                                }else{
+                                }else if(dORv.equals("v")){
                                     Intent intent = new Intent(LoginActivity.this, VolunteerActivity.class);
                                     intent.putExtra("userID", userID);
                                     intent.putExtra("dORv", dORv);
                                     LoginActivity.this.startActivity(intent);
+                                }else{
+                                    AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                                    builder.setMessage("꾜ㅠ")
+                                            .setNegativeButton("다시 시도", null)
+                                            .create()
+                                            .show();
                                 }
 
                             }else{
@@ -92,7 +102,7 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     }
                 };
-                LoginRequest loginRequest = new LoginRequest(userID, dORv, responseListener);
+                LoginRequest loginRequest = new LoginRequest(userID, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
                 queue.add(loginRequest);
             }

@@ -11,14 +11,14 @@ import java.util.Map;
  */
 
 public class LoginRequest extends StringRequest{
-    final static private String URL= "http://172.30.1.4/ProbonoDBConn/Odi/Login_Odi.php";
+    final static private String URL= "http://10.30.20.15/ProbonoDBConn/Odi/Login_Odi.php";
     private Map<String, String> parameters;
 
-    public LoginRequest(String userID, String dORv, Response.Listener<String> listener) {
+    public LoginRequest(String userID, Response.Listener<String> listener) {
         super(Method.POST, URL, listener, null);
         parameters = new HashMap<>();
         parameters.put("userID", userID);
-        parameters.put("dORv", dORv);
+
     }
     @Override
     public Map<String, String> getParams(){

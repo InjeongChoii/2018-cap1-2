@@ -51,7 +51,7 @@ public class VolunteerActivity extends AppCompatActivity {
         }catch (Exception e){
             e.printStackTrace();
         }
-
+        startLocationService();
         requestMyLocation();
        // locationText = (TextView) findViewById(R.id.locationText);
 
