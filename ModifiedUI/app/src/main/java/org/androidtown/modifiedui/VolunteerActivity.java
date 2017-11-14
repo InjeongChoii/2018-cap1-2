@@ -26,8 +26,8 @@ public class VolunteerActivity extends AppCompatActivity {
     private static final String TAG = "VolunteerActivity";
     SupportMapFragment mapFragment;
     GoogleMap map;
-    TextView locationText;
-    MarkerOptions myLocationMarker;
+    String locationX;
+    String locationY;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +52,6 @@ public class VolunteerActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        //
         startLocationService();
         requestMyLocation();
 
@@ -61,8 +60,14 @@ public class VolunteerActivity extends AppCompatActivity {
         obRegiButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent obRegiIntent = new Intent(VolunteerActivity.this,LocationRegisterActivity.class);
-                VolunteerActivity.this.startActivity(obRegiIntent);
+                Intent intent = new Intent(VolunteerActivity.this,LocationRegisterActivity.class);
+
+                Toast toast = Toast.makeText(getApplicationContext(),"LocationX : " + locationX + " , locationY : " + locationY , Toast.LENGTH_LONG);
+                toast.show();
+
+                intent.putExtra("locationX",locationX);
+                intent.putExtra("locationY",locationY);
+                VolunteerActivity.this.startActivity(intent);
             }
         });
 
@@ -84,8 +89,6 @@ public class VolunteerActivity extends AppCompatActivity {
 
     private void requestMyLocation(){
         LocationManager manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        //boolean isGPSEnabled = manager.isProviderEnabled(LocationManager.GPS_PROVIDER);
-        //boolean isnetworkEnabled = manager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
 
         try{
             long minTime = 10000;
@@ -141,6 +144,7 @@ public class VolunteerActivity extends AppCompatActivity {
         }catch (SecurityException e){
             e.printStackTrace();
         }
+
     }
 
     private void showCurrentLocation(Location location){  //마커 표시
@@ -183,9 +187,10 @@ public class VolunteerActivity extends AppCompatActivity {
                 Double latitude = lastLocation.getLatitude();
                 Double longitude = lastLocation.getLongitude();
 
-//                locationText.setText("내위치 : "+latitude + ", "+longitude);
-                Toast.makeText(getApplicationContext(), "Last Known Location : "+ "Latitude"+ latitude
-                + "\nLongitude: "+longitude, Toast.LENGTH_LONG).show();
+                locationX = String.valueOf(latitude);
+                locationY = String.valueOf(longitude);
+
+
             }
         }catch (SecurityException ex){
             ex.printStackTrace();
@@ -202,9 +207,14 @@ private class GPSListener implements LocationListener { //위치 리스너
         Double latitude = location.getLatitude();
         Double longitude = location.getLongitude();
 
+        Toast toast = Toast.makeText(getApplicationContext(),"Latitude : " + latitude + " , longitude : " + longitude , Toast.LENGTH_LONG);
+        toast.show();
         String msg = "Latitude : "+latitude+ "\nLongitude : "+longitude;
         Log.i("GPSListener",msg);
-        
+
+        locationX = String.valueOf(latitude);
+        locationY = String.valueOf(longitude);
+
     }
 
     @Override
