@@ -1,10 +1,8 @@
 package org.androidtown.modifiedui;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.telephony.TelephonyManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -30,18 +28,7 @@ public class RegisterActivity extends AppCompatActivity {
         final CheckBox checkBox = (CheckBox)findViewById(R.id.checkBox);
         final EditText carerText = (EditText) findViewById(R.id.carerText);
 
-        //전화번호 자동 가져오기
-        String userID = null;
-        TelephonyManager mgr = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
-        try{
-            userID = mgr.getLine1Number();
-            userID = userID.replace("+82","0");
-            if(userID != null) {
-                idText.setText(userID);
-            }else{
-                idText.setText("failed to get phone number");
-            }
-        }catch (Exception e){}
+        String userID = ((MyApp)getApplicationContext()).getUserID();
 
         //체크박스로 carer 활성화여부 결정
         checkBox.setChecked(false);

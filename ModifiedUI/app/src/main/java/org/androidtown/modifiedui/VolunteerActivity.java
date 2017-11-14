@@ -51,19 +51,11 @@ public class VolunteerActivity extends AppCompatActivity {
         }catch (Exception e){
             e.printStackTrace();
         }
+
+        //
         startLocationService();
         requestMyLocation();
-       // locationText = (TextView) findViewById(R.id.locationText);
 
-        /*위치확인 버튼 : 삭제함
-        Button locationButton = (Button) findViewById(R.id.locationButton);
-        locationButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //startLocationService();   ->현재위치 좌표 받아오기
-                requestMyLocation();
-            }
-        });*/
 
         Button obRegiButton = (Button) findViewById(R.id.obRegiButton);
         obRegiButton.setOnClickListener(new View.OnClickListener() {
@@ -191,9 +183,9 @@ public class VolunteerActivity extends AppCompatActivity {
                 Double latitude = lastLocation.getLatitude();
                 Double longitude = lastLocation.getLongitude();
 
-                locationText.setText("내위치 : "+latitude + ", "+longitude);
-                /*Toast.makeText(getApplicationContext(), "Last Known Location : "+ "Latitude"+ latitude
-                + "\nLongitude: "+longitude, Toast.LENGTH_LONG).show();*/
+//                locationText.setText("내위치 : "+latitude + ", "+longitude);
+                Toast.makeText(getApplicationContext(), "Last Known Location : "+ "Latitude"+ latitude
+                + "\nLongitude: "+longitude, Toast.LENGTH_LONG).show();
             }
         }catch (SecurityException ex){
             ex.printStackTrace();
@@ -212,9 +204,7 @@ private class GPSListener implements LocationListener { //위치 리스너
 
         String msg = "Latitude : "+latitude+ "\nLongitude : "+longitude;
         Log.i("GPSListener",msg);
-
-        locationText.setText("내 위치 : " + latitude + ", "+longitude);
-        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
+        
     }
 
     @Override

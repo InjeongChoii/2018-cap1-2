@@ -44,6 +44,8 @@ public class LoginActivity extends AppCompatActivity {
             }
         }catch (Exception e){}
 
+        ((MyApp)getApplicationContext()).setUserID(userID);
+
         //디비 연동 로그인
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,18 +70,17 @@ public class LoginActivity extends AppCompatActivity {
                                 String dORv = jsonResponse.getString("dORv");
                                 String carer = jsonResponse.getString("carer");
 
-                                Toast toast = Toast.makeText(getApplicationContext(), userID +" dORV : "+ dORv + carer, Toast.LENGTH_LONG);
-                                toast.show();
+//                                Toast toast = Toast.makeText(getApplicationContext(), userID +" dORV : "+ dORv + carer, Toast.LENGTH_LONG);
+//                                toast.show();
 
                                 if(dORv.equals("d")){
                                     Intent intent = new Intent(LoginActivity.this, MapCallActivity.class);
                                     intent.putExtra("userID", userID);
-                                    intent.putExtra("dORv", dORv);
+                                    intent.putExtra("carer", carer);
                                     LoginActivity.this.startActivity(intent);
                                 }else if(dORv.equals("v")){
                                     Intent intent = new Intent(LoginActivity.this, VolunteerActivity.class);
                                     intent.putExtra("userID", userID);
-                                    intent.putExtra("dORv", dORv);
                                     LoginActivity.this.startActivity(intent);
                                 }else{
                                     AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
