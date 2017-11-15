@@ -17,13 +17,6 @@
         android:text="getUserID"
         android:textSize="40dp" />
 
-    <CheckBox
-        android:id="@+id/loginCkbx"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_weight="0.06" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

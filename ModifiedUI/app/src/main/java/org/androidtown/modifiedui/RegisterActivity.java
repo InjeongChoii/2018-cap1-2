@@ -29,6 +29,8 @@ public class RegisterActivity extends AppCompatActivity {
         final EditText carerText = (EditText) findViewById(R.id.carerText);
 
         String userID = ((MyApp)getApplicationContext()).getUserID();
+        idText.setText(userID);
+
 
         //체크박스로 carer 활성화여부 결정
         checkBox.setChecked(false);
@@ -36,9 +38,9 @@ public class RegisterActivity extends AppCompatActivity {
 
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {//장애인인 경우 : 보호자 연락처 입력 칸 활성화
                 if(isChecked){
-                    carerText.setEnabled(true);     //장애인인 경우 : 보호자 연락처 활성화
+                    carerText.setEnabled(true);
                     carerText.requestFocus();
                 }else{
                     carerText.setEnabled(false);
@@ -52,12 +54,10 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String userID = idText.getText().toString();
                 String userName = nameText.getText().toString();
-                String dORv = "";
+                String dORv = "v";
                 String carer = "";
 
-                if(! checkBox.isChecked()){ //비장애인인 경우
-                    dORv = "v";
-                } else if(checkBox.isChecked()){
+                if(checkBox.isChecked()){
                     dORv = "d";
                     carer = carerText.getText().toString();
                 }

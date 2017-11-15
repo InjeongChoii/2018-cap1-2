@@ -9,7 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.telephony.TelephonyManager;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -27,7 +26,6 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         final EditText idText = (EditText) findViewById(R.id.idText);
-        final CheckBox loginCkbx = (CheckBox)findViewById(R.id.loginCkbx);
         final Button loginButton = (Button) findViewById(R.id.loginButton);
 //        Button dbutton = (Button)findViewById(R.id.disabledButton);
 //        Button vbutton = (Button)findViewById(R.id.volunteerButton);
@@ -45,6 +43,9 @@ public class LoginActivity extends AppCompatActivity {
         }catch (Exception e){}
 
         ((MyApp)getApplicationContext()).setUserID(userID);
+
+        Toast toast = Toast.makeText(getApplicationContext(),((MyApp) getApplicationContext()).getUserID(), Toast.LENGTH_LONG);
+        toast.show();
 
         //디비 연동 로그인
         loginButton.setOnClickListener(new View.OnClickListener() {
