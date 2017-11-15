@@ -29,7 +29,7 @@ public class MapCallActivity extends AppCompatActivity {
     private static final String TAG = "";
     private long btnPressTime = 0;
     private Toast toast;
-    private String tel = "tel:010-0000-0000";
+    private String tel = "tel:";
 
     //boolean isGrantStorage = grantExternalStoragePermission();
 
@@ -38,6 +38,14 @@ public class MapCallActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map_call);
+
+        Intent intent = getIntent();
+        String userID = intent.getStringExtra("userID");
+        String carer = intent.getStringExtra("carer");
+        tel = tel + getPhoneNumberText(carer);
+
+        Toast toast = Toast.makeText(getApplicationContext(),carer, Toast.LENGTH_LONG);
+        toast.show();
 
 
 
@@ -69,12 +77,27 @@ public class MapCallActivity extends AppCompatActivity {
                         return;
                     }
                     if (System.currentTimeMillis() <= btnPressTime + 1000) {
-                        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse(tel));
-                        startActivity(intent);
+                        Intent intent2 = new Intent(Intent.ACTION_CALL, Uri.parse(tel));
+                        startActivity(intent2);
                     }
                 //}
             }
         });
     }
 
+    public String getPhoneNumberText(String number) {
+        String phoneText = "";
+
+        number = number.replace("-", "");
+
+        int length = number.length();
+
+        if (number.length() >= 10) {
+            phoneText = number.substring(0, 3) + "-"
+                    + number.substring(3, length-4) + "-"
+                    + number.substring(length-4, length);
+        }
+
+        return phoneText;
+    }
 }

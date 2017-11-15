@@ -11,7 +11,7 @@ import java.util.Map;
  */
 
 public class LoginRequest extends StringRequest{
-    final static private String URL= "http://10.30.116.4/ProbonoDBConn/Odi/Login_Odi.php";
+    final static private String URL= "http://10.30.124.51/ProbonoDBConn/Odi/Login_Odi.php";
     private Map<String, String> parameters;
 
     public LoginRequest(String userID, Response.Listener<String> listener) {
