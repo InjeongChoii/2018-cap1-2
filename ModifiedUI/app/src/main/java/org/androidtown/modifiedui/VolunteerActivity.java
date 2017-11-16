@@ -2,6 +2,7 @@ package org.androidtown.modifiedui;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -10,7 +11,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -18,7 +18,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -28,6 +28,8 @@ public class VolunteerActivity extends AppCompatActivity {
     GoogleMap map;
     String locationX;
     String locationY;
+    double mLat;
+    double mLng;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,7 +93,7 @@ public class VolunteerActivity extends AppCompatActivity {
         LocationManager manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
         try{
-            long minTime = 10000;
+            long minTime = 2000;
             float minDistance =0;
             manager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
                     minTime, minDistance, new LocationListener() {
@@ -152,25 +154,12 @@ public class VolunteerActivity extends AppCompatActivity {
         map.animateCamera(CameraUpdateFactory.newLatLngZoom(curPoint,18));
         //showMyLocationMarker(location);
     }
-    /*private void showMyLocationMarker(Location location){
-        if(myLocationMarker == null){
-            myLocationMarker = new MarkerOptions();
-            myLocationMarker.position(
-                    new LatLng(location.getLatitude(), location.getLongitude()));
-            myLocationMarker.title("내 위치 \n");
-            myLocationMarker.snippet("GPS로 확인한 위치");
-            myLocationMarker.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker));
-            map.addMarker(myLocationMarker);
-        }else{
-            myLocationMarker.position(new LatLng(location.getLatitude(),location.getLongitude()));
-        }
-    }*/
 
     private void startLocationService(){
         LocationManager manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
         GPSListener gpsListener = new GPSListener();
-        long minTime = 10000;
+        long minTime = 2000;
         float minDistance = 0;
 
         try{
@@ -189,6 +178,8 @@ public class VolunteerActivity extends AppCompatActivity {
 
                 locationX = String.valueOf(latitude);
                 locationY = String.valueOf(longitude);
+                mLat = Double.parseDouble(locationX);
+                mLng = Double.parseDouble(locationY);
 
 
             }
@@ -199,6 +190,26 @@ public class VolunteerActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), "위치확인이 시작되었습니다. 로그를 확인하세요.", Toast.LENGTH_SHORT).show();
     }
 
+    public void onAddMarker(){
+        LatLng position = new LatLng(mLat,mLng);
+
+        //나의 위치 마커
+        MarkerOptions mymarker = new MarkerOptions()
+                .position(position);   //마커위치
+
+        // 반경
+        CircleOptions circle1KM = new CircleOptions().center(position) //원점
+                .radius(5)      //반지름 단위 : m
+                .strokeWidth(0f)  //선너비 0f : 선없음
+                .fillColor(Color.parseColor("#880000ff")); //배경색
+
+        //마커추가
+        this.map.addMarker(mymarker);
+
+        //원추가
+        this.map.addCircle(circle1KM);
+
+    }
 
 private class GPSListener implements LocationListener { //위치 리스너
 
@@ -207,13 +218,15 @@ private class GPSListener implements LocationListener { //위치 리스너
         Double latitude = location.getLatitude();
         Double longitude = location.getLongitude();
 
-        Toast toast = Toast.makeText(getApplicationContext(),"Latitude : " + latitude + " , longitude : " + longitude , Toast.LENGTH_LONG);
-        toast.show();
         String msg = "Latitude : "+latitude+ "\nLongitude : "+longitude;
         Log.i("GPSListener",msg);
 
         locationX = String.valueOf(latitude);
         locationY = String.valueOf(longitude);
+        mLat = Double.parseDouble(locationX);
+        mLng = Double.parseDouble(locationY);
+
+        onAddMarker();
 
     }
 

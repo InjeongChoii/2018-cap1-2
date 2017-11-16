@@ -44,21 +44,11 @@ public class LoginActivity extends AppCompatActivity {
 
         ((MyApp)getApplicationContext()).setUserID(userID);
 
-        Toast toast = Toast.makeText(getApplicationContext(),((MyApp) getApplicationContext()).getUserID(), Toast.LENGTH_LONG);
-        toast.show();
-
         //디비 연동 로그인
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final String userID = idText.getText().toString();
-                //final String dORv = "";
-                /*if(!loginCkbx.isChecked()){ //비장애인인 경우
-                    dORv = "v";
-                } else if(loginCkbx.isChecked()){
-                    dORv = "d";
-                }
-                final String finalDORv = dORv;*/
 
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
