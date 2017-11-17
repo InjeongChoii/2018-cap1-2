@@ -5,51 +5,65 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:gravity="center"
+    android:padding="10dp"
     tools:context="org.androidtown.modifiedui.LoginActivity"
+    android:background="@color/odi"
     android:weightSum="1">
 
 
-    <EditText
-        android:id="@+id/idText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="getUserID"
-        android:textSize="40dp" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
+        <EditText
+            android:id="@+id/idText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@color/text_color_white"
+            android:gravity="center_horizontal"
+            android:padding="10dp"
+            android:text="getUserID"
+            android:textColor="@color/odi"
+            android:textSize="20dp" />
 
         <Button
             android:id="@+id/loginButton"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="로그인" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+            android:layout_marginTop="10dp"
+            android:background="#FFECECEC"
+            android:text="로그인"
+            android:textColor="@color/odi"
+            android:textSize="20dp" />
 
         <TextView
             android:id="@+id/textView5"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="50dp"
             android:gravity="center"
-            android:text="아이디가 없으십니까?" />
+            android:text="아이디가 없으십니까?"
+            android:textColor="@color/text_color_white"
+            android:textSize="15dp" />
 
         <Button
             android:id="@+id/registerButton"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_marginBottom="20dp"
+            android:background="#FFECECEC"
+            android:gravity="center"
             android:text="회원가입"
+            android:textColor="@color/odi"
             android:textSize="20dp" />
+
 
     </LinearLayout>
 

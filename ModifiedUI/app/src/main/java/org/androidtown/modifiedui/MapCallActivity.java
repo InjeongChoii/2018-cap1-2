@@ -44,10 +44,10 @@ public class MapCallActivity extends AppCompatActivity implements OnMapReadyCall
     double mLat;
     double mLng;
 
-    public static MapCallActivity newInstance() {
-        MapCallActivity f = new MapCallActivity();
-        return f;
-    }
+//    public static MapCallActivity newInstance() {
+//        MapCallActivity f = new MapCallActivity();
+//        return f;
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,8 +95,8 @@ public class MapCallActivity extends AppCompatActivity implements OnMapReadyCall
         startLocationService();
         requestMyLocation();
 
-        SupportMapFragment mapFragment = (SupportMapFragment)getSupportFragmentManager().findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+//        SupportMapFragment mapFragment = (SupportMapFragment)getSupportFragmentManager().findFragmentById(R.id.map);
+//        mapFragment.getMapAsync(this);
     }
 
     public String getPhoneNumberText(String number) {
@@ -286,42 +286,41 @@ public class MapCallActivity extends AppCompatActivity implements OnMapReadyCall
 
         }
     }
-    /**
-     * 주어진 정보를 기반으로 맛집 정보를 조회하고 지도에 표시한다.
-     * @param memberSeq 사용자 시퀀스
-     * @param latLng 위도, 경도 객체
-     * @param distance 거리
-     * @param userLatLng 사용자 현재 위도, 경도 객체
-     */
-    Response.Listener<String> responseListener = new Response.Listener<String>() {
-        @Override
-        public void onResponse(String response) {
-            try{
-                JSONObject jsonResponse = new JSONObject(response);
-                boolean success = jsonResponse.getBoolean("success");
-                if(success){
-                    String locationX = jsonResponse.getString("locationX");
-                    String locationY = jsonResponse.getString("locationY");
-                    String type = jsonResponse.getString("type");
-
-//                    Intent intent = new Intent(LoginActivity.this, MapCallActivity.class);
-//                    intent.putExtra("userID", userID);
-//                    intent.putExtra("carer", carer);
-//                    LoginActivity.this.startActivity(intent);
-
-
-                }else{
-                    AlertDialog.Builder builder = new AlertDialog.Builder(MapCallActivity.this);
-                    builder.setMessage("로그인에 실패하였습니다.")
-                            .setNegativeButton("다시 시도", null)
-                            .create()
-                            .show();
-                }
-
-            }catch (Exception e){
-                e.printStackTrace();
-            }
-        }
-    };
+//    /**
+//     * 주어진 정보를 기반으로 맛집 정보를 조회하고 지도에 표시한다.
+//     * @param memberSeq 사용자 시퀀스
+//     * @param latLng 위도, 경도 객체
+//     * @param distance 거리
+//     * @param userLatLng 사용자 현재 위도, 경도 객체
+//     */
+//    Response.Listener<String> responseListener = new Response.Listener<String>() {
+//        @Override
+//        public void onResponse(String response) {
+//            try{
+//                JSONObject jsonResponse = new JSONObject(response);
+//                boolean success = jsonResponse.getBoolean("success");
+//                if(success){
+//                    String locationX = jsonResponse.getString("locationX");
+//                    String locationY = jsonResponse.getString("locationY");
+//                    String type = jsonResponse.getString("type");
+//
+////                    Intent intent = new Intent(LoginActivity.this, MapCallActivity.class);
+////                    intent.putExtra("userID", userID);
+////                    intent.putExtra("carer", carer);
+////                    LoginActivity.this.startActivity(intent);
+//
+//                }else{
+//                    AlertDialog.Builder builder = new AlertDialog.Builder(MapCallActivity.this);
+//                    builder.setMessage("로그인에 실패하였습니다.")
+//                            .setNegativeButton("다시 시도", null)
+//                            .create()
+//                            .show();
+//                }
+//
+//            }catch (Exception e){
+//                e.printStackTrace();
+//            }
+//        }
+//    };
 
 }

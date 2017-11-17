@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -24,8 +25,8 @@ public class LocationRegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location_register);
 
-        final EditText latitude = (EditText)findViewById(R.id.latitude);
-        final EditText longitude = (EditText)findViewById(R.id.longitude);
+        final TextView latitude = (TextView)findViewById(R.id.latitude);
+        final TextView longitude = (TextView)findViewById(R.id.longitude);
         final EditText typeText = (EditText)findViewById(R.id.type);
         final String userID = ((MyApp)getApplicationContext()).getUserID();
 
