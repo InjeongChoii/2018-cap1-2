@@ -10,7 +10,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -18,9 +17,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 
 public class VolunteerActivity extends AppCompatActivity {
     private static final String TAG = "VolunteerActivity";
@@ -62,8 +59,8 @@ public class VolunteerActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(VolunteerActivity.this,LocationRegisterActivity.class);
 
-                Toast toast = Toast.makeText(getApplicationContext(),"LocationX : " + locationX + " , locationY : " + locationY , Toast.LENGTH_LONG);
-                toast.show();
+//                Toast toast = Toast.makeText(getApplicationContext(),"LocationX : " + locationX + " , locationY : " + locationY , Toast.LENGTH_LONG);
+//                toast.show();
 
                 intent.putExtra("locationX",locationX);
                 intent.putExtra("locationY",locationY);
@@ -74,18 +71,18 @@ public class VolunteerActivity extends AppCompatActivity {
 
     }
 
-    public void onResume(){
-        super.onResume();
-        if(map != null){
-            map.setMyLocationEnabled(true);     //액티비티 중지시 내 위치 표시 활성화?
-        }
-    }
-    public void onPause(){
-        super.onPause();
-        if(map !=null){
-            map.setMyLocationEnabled(false);    //액티비티 중지시 내 위치 표시 비활성화
-        }
-    }
+//    public void onResume(){
+//        super.onResume();
+//        if(map != null){
+//            map.setMyLocationEnabled(true);     //액티비티 중지시 내 위치 표시 활성화?
+//        }
+//    }
+//    public void onPause(){
+//        super.onPause();
+//        if(map !=null){
+//            map.setMyLocationEnabled(false);    //액티비티 중지시 내 위치 표시 비활성화
+//        }
+//    }
 
     private void requestMyLocation(){
         LocationManager manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -152,19 +149,6 @@ public class VolunteerActivity extends AppCompatActivity {
         map.animateCamera(CameraUpdateFactory.newLatLngZoom(curPoint,18));
         //showMyLocationMarker(location);
     }
-    /*private void showMyLocationMarker(Location location){
-        if(myLocationMarker == null){
-            myLocationMarker = new MarkerOptions();
-            myLocationMarker.position(
-                    new LatLng(location.getLatitude(), location.getLongitude()));
-            myLocationMarker.title("내 위치 \n");
-            myLocationMarker.snippet("GPS로 확인한 위치");
-            myLocationMarker.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker));
-            map.addMarker(myLocationMarker);
-        }else{
-            myLocationMarker.position(new LatLng(location.getLatitude(),location.getLongitude()));
-        }
-    }*/
 
     private void startLocationService(){
         LocationManager manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -200,15 +184,15 @@ public class VolunteerActivity extends AppCompatActivity {
     }
 
 
-private class GPSListener implements LocationListener { //위치 리스너
+protected class GPSListener implements LocationListener { //위치 리스너
 
     @Override
     public void onLocationChanged(Location location) {
         Double latitude = location.getLatitude();
         Double longitude = location.getLongitude();
 
-        Toast toast = Toast.makeText(getApplicationContext(),"Latitude : " + latitude + " , longitude : " + longitude , Toast.LENGTH_LONG);
-        toast.show();
+//        Toast toast = Toast.makeText(getApplicationContext(),"Latitude : " + latitude + " , longitude : " + longitude , Toast.LENGTH_LONG);
+//        toast.show();
         String msg = "Latitude : "+latitude+ "\nLongitude : "+longitude;
         Log.i("GPSListener",msg);
 

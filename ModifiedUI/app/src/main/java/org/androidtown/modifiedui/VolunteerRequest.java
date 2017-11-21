@@ -11,7 +11,7 @@ import java.util.Map;
  */
 
 public class VolunteerRequest extends StringRequest{
-    final static private String URL= "http://10.30.124.51/ProbonoDBConn/Odi/Volunteer_Odi.php";
+    final static private String URL= "http://10.30.29.44/ProbonoDBConn/Odi/Volunteer_Odi.php";
     private Map<String, String> parameters;
 
 

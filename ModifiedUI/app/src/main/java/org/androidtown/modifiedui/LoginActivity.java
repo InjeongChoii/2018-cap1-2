@@ -10,6 +10,7 @@ import android.telephony.TelephonyManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -44,8 +45,8 @@ public class LoginActivity extends AppCompatActivity {
 
         ((MyApp)getApplicationContext()).setUserID(userID);
 
-        Toast toast = Toast.makeText(getApplicationContext(),((MyApp) getApplicationContext()).getUserID(), Toast.LENGTH_LONG);
-        toast.show();
+//        Toast toast = Toast.makeText(getApplicationContext(),((MyApp) getApplicationContext()).getUserID(), Toast.LENGTH_LONG);
+//        toast.show();
 
         //디비 연동 로그인
         loginButton.setOnClickListener(new View.OnClickListener() {

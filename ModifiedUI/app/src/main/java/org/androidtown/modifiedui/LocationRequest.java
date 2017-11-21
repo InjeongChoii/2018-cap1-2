@@ -11,7 +11,7 @@ import java.util.Map;
  */
 
 public class LocationRequest extends StringRequest {
-    final static private String URL= "http://10.30.30.164/ProbonoDBConn/Odi/Volunteer_Odi.php";
+    final static private String URL= "http://10.30.29.44/ProbonoDBConn/Odi/Volunteer_Odi.php";
     private Map<String, String> parameters;
 
     public LocationRequest(String locationX, String locationY, String type, String userID, Response.Listener<String> listener){

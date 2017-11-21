@@ -33,6 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="전화걸기"
+            android:background="#FFEBEBEB"
             android:textSize="50dp" />
     </LinearLayout>
 </LinearLayout>

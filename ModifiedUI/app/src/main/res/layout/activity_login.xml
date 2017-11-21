@@ -6,51 +6,58 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="org.androidtown.modifiedui.LoginActivity"
+    android:background="@color/odi"
     android:weightSum="1">
 
 
-    <EditText
-        android:id="@+id/idText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="getUserID"
-        android:textSize="40dp" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        android:padding="30dp">
+
+        <EditText
+            android:id="@+id/idText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="135dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="getUserID"
+            android:textSize="35dp"
+            android:background="@color/text_color_white"
+            android:textColor="@color/odi"/>
 
         <Button
             android:id="@+id/loginButton"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
             android:layout_weight="1"
-            android:text="로그인" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+            android:background="#FFEBEBEB"
+            android:text="로그인"
+            android:textSize="25dp" />
 
         <TextView
             android:id="@+id/textView5"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="아이디가 없으십니까?" />
+            android:text="아이디가 없으십니까?"
+            android:textColor="@color/text_color_white"
+            android:textSize="20dp"/>
 
         <Button
             android:id="@+id/registerButton"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="회원가입"
-            android:textSize="20dp" />
-
+            android:textSize="25dp"
+            android:background="#FFEBEBEB"/>
     </LinearLayout>
 
 </LinearLayout>
