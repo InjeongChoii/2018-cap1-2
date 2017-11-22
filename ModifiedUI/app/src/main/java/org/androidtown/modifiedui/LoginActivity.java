@@ -63,8 +63,6 @@ public class LoginActivity extends AppCompatActivity {
                                 String dORv = jsonResponse.getString("dORv");
                                 String carer = jsonResponse.getString("carer");
 
-//                                Toast toast = Toast.makeText(getApplicationContext(), userID +" dORV : "+ dORv + carer, Toast.LENGTH_LONG);
-//                                toast.show();
 
                                 if(dORv.equals("d")){
                                     Intent intent = new Intent(LoginActivity.this, MapCallActivity.class);

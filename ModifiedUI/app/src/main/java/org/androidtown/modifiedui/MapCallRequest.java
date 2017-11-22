@@ -11,7 +11,7 @@ import java.util.Map;
  */
 
 public class MapCallRequest extends StringRequest {
-    final static private String URL= "http://10.30.30.164/ProbonoDBConn/Odi/MapCall_Odi.php";
+    final static private String URL= "http://10.30.30.192/ProbonoDBConn/Odi/MapCall_Odi.php";
     private Map<String, String> parameters;
 
 

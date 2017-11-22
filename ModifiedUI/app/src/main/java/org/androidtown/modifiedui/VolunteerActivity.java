@@ -64,8 +64,6 @@ public class VolunteerActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(VolunteerActivity.this,LocationRegisterActivity.class);
 
-                Toast toast = Toast.makeText(getApplicationContext(),"LocationX : " + locationX + " , locationY : " + locationY , Toast.LENGTH_LONG);
-                toast.show();
 
                 intent.putExtra("locationX",locationX);
                 intent.putExtra("locationY",locationY);
@@ -74,19 +72,6 @@ public class VolunteerActivity extends AppCompatActivity {
         });
 
 
-    }
-
-    public void onResume(){
-        super.onResume();
-        if(map != null){
-            map.setMyLocationEnabled(true);     //액티비티 중지시 내 위치 표시 활성화?
-        }
-    }
-    public void onPause(){
-        super.onPause();
-        if(map !=null){
-            map.setMyLocationEnabled(false);    //액티비티 중지시 내 위치 표시 비활성화
-        }
     }
 
     private void requestMyLocation(){
@@ -211,7 +196,7 @@ public class VolunteerActivity extends AppCompatActivity {
 
     }
 
-private class GPSListener implements LocationListener { //위치 리스너
+protected class GPSListener implements LocationListener { //위치 리스너
 
     @Override
     public void onLocationChanged(Location location) {
