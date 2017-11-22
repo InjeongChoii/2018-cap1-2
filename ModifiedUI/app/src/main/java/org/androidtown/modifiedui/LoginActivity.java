@@ -1,6 +1,7 @@
 package org.androidtown.modifiedui;
 
-import android.app.Dialog;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,14 +11,14 @@ import android.telephony.TelephonyManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONObject;
+
+import static com.android.volley.Request.Method.HEAD;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -45,21 +46,11 @@ public class LoginActivity extends AppCompatActivity {
 
         ((MyApp)getApplicationContext()).setUserID(userID);
 
-//        Toast toast = Toast.makeText(getApplicationContext(),((MyApp) getApplicationContext()).getUserID(), Toast.LENGTH_LONG);
-//        toast.show();
-
         //디비 연동 로그인
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final String userID = idText.getText().toString();
-                //final String dORv = "";
-                /*if(!loginCkbx.isChecked()){ //비장애인인 경우
-                    dORv = "v";
-                } else if(loginCkbx.isChecked()){
-                    dORv = "d";
-                }
-                final String finalDORv = dORv;*/
 
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
@@ -72,8 +63,6 @@ public class LoginActivity extends AppCompatActivity {
                                 String dORv = jsonResponse.getString("dORv");
                                 String carer = jsonResponse.getString("carer");
 
-//                                Toast toast = Toast.makeText(getApplicationContext(), userID +" dORV : "+ dORv + carer, Toast.LENGTH_LONG);
-//                                toast.show();
 
                                 if(dORv.equals("d")){
                                     Intent intent = new Intent(LoginActivity.this, MapCallActivity.class);
