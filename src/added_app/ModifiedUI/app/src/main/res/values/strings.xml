@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">ODi</string>
+
+
+    <!-- permission -->
+    <string name="permission_checking">네트워크에 연결되어있지 않습니다</string>
+    <string name="index_message">odi</string>
+    <string name="permission_setting_title">권한 설정</string>
+    <string name="permission_setting_message">앱을 실행하기 위해서는 권한 설정을 해야 합니다.</string>
+    <string name="permission_setting_restart">권한을 설정하고 다시 실행해 주세요!</string>
+
+    <string name="kakao_app_key">d20c8d3527d3391a1a75158467787b4d</string>
+
+    <string name="speed_select_title">속도선택 (Newtone Talk1 만 변경 가능)</string>
+    <string-array name="mode">
+        <item>Newtone Talk 1</item>
+        <item>Newtone Talk 2</item>
+    </string-array>
+
+    <!-- common -->
+    <string name="cancel">취소</string>
+    <string name="setting">설정</string>
+</resources>
